@@ -4,9 +4,12 @@ const elm_hex = document.getElementById('hex');
 
 // Function
 const convert = (rgb) => {
-    rgb = rgb.replace(/RGB\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)/g, function(match, r, g, b) {
-        return '#' + ('0' + parseInt(r, 10).toString(16)).slice(-2) + ('0' + parseInt(g, 10).toString(16)).slice(-2) + ('0' + parseInt(b, 10).toString(16)).slice(-2);
-    });
+    const rep = (match, r, g, b) => {
+        return '#' + ('0' + parseInt(r).toString(16)).slice(-2) + ('0' + parseInt(g).toString(16)).slice(-2) + ('0' + parseInt(b).toString(16)).slice(-2);
+    };
+
+    rgb = rgb.replace(/RGB\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/gi, rep);
+    rgb = rgb.replace(/\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/gi, rep);
     return rgb;
 };
 
