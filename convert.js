@@ -14,14 +14,14 @@ const convert = (rgb) => {
 };
 
 // Events
-window.onload = function() {
+window.onload = () => {
     elm_hex.value = convert(elm_rgb.value);
 };
 
-elm_rgb.addEventListener('input', function() {
+elm_rgb.addEventListener('input', () => {
     elm_hex.value = convert(elm_rgb.value);
 });
 
-elm_hex.addEventListener('change', function() {
+elm_hex.addEventListener('change', () => {
     elm_rgb.value = convert(elm_hex.value);
 });
